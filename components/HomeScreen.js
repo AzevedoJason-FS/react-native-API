@@ -8,6 +8,8 @@ export default function HomeScreen({navigation}) {
    <SafeAreaView>
        <View style={styles.nav}>
         <Button color="white" title="Dashboard" onPress={() => navigation.navigate('Dashboard')} />
+        <Button color="white" title="SignUp" onPress={() => navigation.navigate('SignUp')} />
+        <Button color="white" title="Login" onPress={() => navigation.navigate('Login')} />
        </View>
        <View style={styles.homeContainer}>
         <Text style={styles.title}>movieposters</Text>

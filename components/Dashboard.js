@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, StyleSheet, Text, View, SafeAreaView, Button,  TextInput} from 'react-native';
+import authService from "../services/auth.service"
+import moviesService from "../services/movies.service"
 import styles from '../AppStyles';
 
 export default function Dashboard({navigation}) {
@@ -11,6 +13,27 @@ export default function Dashboard({navigation}) {
         collection_Name: '',
         year: '',
       });
+
+      useEffect(() => {
+        moviesService.getAllPrivateMovies().then(
+          response => {
+            setMovie(response.data)
+          },
+          (error) => {
+            console.log('secured page error: ', error.response)
+            if(error.response && error.response.status == 403){
+              authService.logout();
+              navigate('/login')
+            }
+          }
+        )
+        // if(!ignore){
+        //   getMovies();
+        // }
+        // return () => {
+        //   ignore = true;
+        // }
+      }, [])
     
 
     const getMovies = async () => {
