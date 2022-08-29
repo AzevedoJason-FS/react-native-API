@@ -108,9 +108,9 @@ export default function Movie({route, navigation}) {
      <View style={styles.homeContainer}>
        {isLoading ? <ActivityIndicator/> : (
         <View>
-        <Text style={styles.largeHeading}>{value && value.name}</Text>
-        <Text style={styles.largeHeading}>{value && value.collection_Name}</Text>
-        <Text style={styles.largeHeading}>{value && value.year}</Text>
+        <Text style={styles.largeHeading}>Name: {value && value.name}</Text>
+        <Text style={styles.largeHeading}>Collection: {value && value.collection_Name}</Text>
+        <Text style={styles.largeHeading}>Year: {value && value.year}</Text>
         <Button title="Delete Movie" onPress={() => deleteMovie()} />
         <View style={styles.formContainer}>
         <TextInput
